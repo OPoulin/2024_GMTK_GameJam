@@ -36,13 +36,26 @@ public class playerMovementScript : MonoBehaviour
             if (context.ReadValue<float>() > 0)
             {
                 runDirection = 1;
+                GetComponent<SpriteRenderer>().flipX = false;
             }
             else if (context.ReadValue<float>() < 0)
             {
                 runDirection = -1;
+                GetComponent<SpriteRenderer>().flipX = true;
             }
         }
     }
+
+
+    void Update()
+    {
+        if(Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y + 0.6f), new Vector2(1,1), 0f))
+        {
+            print("wall");
+        }
+    }
+
+
     void FixedUpdate()
     {
         if (isRunning)
