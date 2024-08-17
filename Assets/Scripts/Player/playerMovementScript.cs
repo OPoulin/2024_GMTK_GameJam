@@ -106,9 +106,11 @@ public class playerMovementScript : MonoBehaviour
 
 
 
+        //if touch floor
         if(Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f))
         {
             canDoubleJump = true;
+            GetComponent<Animator>().SetBool("jumping", false);
         }
     }
 
@@ -119,16 +121,8 @@ public class playerMovementScript : MonoBehaviour
         {
             if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f))
             {
+                //GetComponent<Animator>().SetBool("jumping", true);
                 rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-                GetComponent<Animator>().SetBool("Jumping", true);
-            }
-            else if (playerManagerScript.featherUnlocked) //double jump
-            {
-                if (canDoubleJump)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-                    canDoubleJump = false;
-                }
             }
             else if (wallMounted) //wall jump
             {
@@ -140,6 +134,17 @@ public class playerMovementScript : MonoBehaviour
                 mountControl = false;
                 Invoke("regainControll", wallMountDelay);
             }
+            else if (playerManagerScript.featherUnlocked) //double jump
+            {
+                if (canDoubleJump)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                    canDoubleJump = false;
+
+                    GetComponent<Animator>().SetBool("double jump", true);
+                }
+            }
+            GetComponent<Animator>().SetBool("jumping", true);
         }
     }
     public void doublejumpFeatherAnim()
@@ -161,10 +166,12 @@ public class playerMovementScript : MonoBehaviour
         if (context.ReadValue<float>() == 0)
         {
             isRunning = false;
+            GetComponent<Animator>().SetBool("Running", false);
         }
         else
         {
             isRunning = true;
+            GetComponent<Animator>().SetBool("Running", true);
 
             if (context.ReadValue<float>() > 0)
             {
