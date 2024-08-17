@@ -32,6 +32,10 @@ public class playerMovementScript : MonoBehaviour
     public float gliderHorizontalSpeed;
     float nonGlideSpeed;
 
+    //for feather jump
+    bool canDoubleJump;
+    public GameObject feather;
+
     Rigidbody2D rb;
 
 
@@ -99,6 +103,13 @@ public class playerMovementScript : MonoBehaviour
                 stopGliding();
             }
         }
+
+
+
+        if(Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f))
+        {
+            canDoubleJump = true;
+        }
     }
 
 
@@ -109,8 +120,17 @@ public class playerMovementScript : MonoBehaviour
             if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                GetComponent<Animator>().SetBool("Jumping", true);
             }
-            else if (wallMounted)
+            else if (playerManagerScript.featherUnlocked) //double jump
+            {
+                if (canDoubleJump)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                    canDoubleJump = false;
+                }
+            }
+            else if (wallMounted) //wall jump
             {
                 float wallJumpDirection;
 
@@ -122,7 +142,19 @@ public class playerMovementScript : MonoBehaviour
             }
         }
     }
-
+    public void doublejumpFeatherAnim()
+    {
+        feather.SetActive(true);
+        //turn the feather depending on where player is facing but doesnt work, fuck it
+        /*if(runDirection == 1)
+        {
+            feather.transform.localScale = new Vector3(1, feather.transform.localScale.y, feather.transform.localScale.z);
+        }
+        if (runDirection == -1)
+        {
+            feather.transform.localScale = new Vector3(-1, feather.transform.localScale.y, feather.transform.localScale.z);
+        }*/
+    }
 
     public void onRun(InputAction.CallbackContext context)
     {
