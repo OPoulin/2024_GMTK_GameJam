@@ -1,5 +1,5 @@
 {
-    "name": "New Controls",
+    "name": "playerControls",
     "maps": [
         {
             "name": "default",
@@ -62,6 +62,17 @@
                     "name": "",
                     "id": "620b8b48-e8ac-4d65-9942-aa3e28eb8567",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fced8950-4e71-43a1-b065-23dabc135c71",
+                    "path": "<Keyboard>/#(W)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
