@@ -36,6 +36,10 @@ public class playerMovementScript : MonoBehaviour
     bool canDoubleJump;
     public GameObject feather;
 
+    //colliders and raycasts
+    public GameObject boxSize;
+    public GameObject circleSize;
+
     Rigidbody2D rb;
 
 
@@ -57,21 +61,25 @@ public class playerMovementScript : MonoBehaviour
         //wall jump
         if (playerManagerScript.nailUnlcoked)
         {
-            if (Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y + 0.6f), new Vector2(1, 1), 0f) && !Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f) && isRunning)
+            //if (Physics2D.OverlapBox(boxSize.transform.position, boxSize.transform.localScale, 0f) && !Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f) && isRunning)
+            if (Physics2D.OverlapBox(boxSize.transform.position, boxSize.transform.localScale, 0f) && !Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) && isRunning)
             {
-                if (mountControl)
+                if (mountControl && !wallMounted)
                 {
                     //wall climb conditions complete
-                    wallMounted = true;
-
-                    rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-                    rb.gravityScale = 0;
-                    rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-                    speed = 0;
+                    //wallMounted = true;
 
                     GetComponent<SpriteRenderer>().enabled = false;
                     if (runDirection < 0) { wallRideLeft.SetActive(true); }
                     if (runDirection > 0) { wallRideRight.SetActive(true); }
+
+                    wallMounted = true;
+
+                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    rb.gravityScale = 0;
+                    //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                    speed = 0;
+
                 }
             }
             else
@@ -98,7 +106,7 @@ public class playerMovementScript : MonoBehaviour
             {
                 startGliding();
             }
-            if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f) || wallMounted)
+            if (Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) || wallMounted)
             {
                 stopGliding();
             }
@@ -107,7 +115,7 @@ public class playerMovementScript : MonoBehaviour
 
 
         //if touch floor
-        if(Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f))
+        if(Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x))
         {
             canDoubleJump = true;
             GetComponent<Animator>().SetBool("jumping", false);
@@ -119,7 +127,7 @@ public class playerMovementScript : MonoBehaviour
     {
         if (context.performed)
         {
-            if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f))
+            if (Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x))
             {
                 //GetComponent<Animator>().SetBool("jumping", true);
                 rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
@@ -127,6 +135,8 @@ public class playerMovementScript : MonoBehaviour
             else if (wallMounted) //wall jump
             {
                 float wallJumpDirection;
+
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
                 wallJumpDirection = wallJumpHorzontal * -runDirection;
                 rb.velocity = new Vector2(wallJumpDirection, wallJumpHeight);
@@ -168,7 +178,7 @@ public class playerMovementScript : MonoBehaviour
             isRunning = false;
             GetComponent<Animator>().SetBool("Running", false);
         }
-        else
+        else if(!wallMounted)
         {
             isRunning = true;
             GetComponent<Animator>().SetBool("Running", true);
@@ -227,7 +237,7 @@ public class playerMovementScript : MonoBehaviour
             if (context.performed)
             {
                 //if not on floor and not wall mounted
-                if (!Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f) && !wallMounted)
+                if (!Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) && !wallMounted)
                 {
                     isGliding = true;
                 }

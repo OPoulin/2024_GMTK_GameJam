@@ -8,9 +8,9 @@ public class playerManagerScript : MonoBehaviour
     public static int maxHealth;
 
     //powerups
-    public static bool nailUnlcoked = true;
-    public static bool clothUnlocked = true;
-    public static bool featherUnlocked = true;
+    public static bool nailUnlcoked = false;
+    public static bool clothUnlocked = false;
+    public static bool featherUnlocked = false;
 
 
     void Start()
