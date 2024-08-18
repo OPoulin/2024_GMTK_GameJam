@@ -8,7 +8,7 @@ public class ratBehaviorScript : MonoBehaviour
     public int maxHealth;
     public int damage;
 
-    public float ratSpeed;
+    public static float ratSpeed = 1.38f;
     public float minX;
     public float maxX;
     public int direction;
@@ -21,31 +21,41 @@ public class ratBehaviorScript : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<Animator>().SetBool("isWalk", true);
+
         isIdle = false;
         rb = GetComponent<Rigidbody2D>();
         scale = transform.localScale.x;
     }
-    void fixedUpdate()
+    void Update()
     {
             float speed;
 
         if(!isIdle)
         {
+            print("is Walk");
             GetComponent<Animator>().SetBool("isWalk", true);
             speed = ratSpeed * direction;
             rb.velocity = new Vector2(speed, 0);
 
             //change direction when hit limit
-            if(transform.position.x < minX)
+            if(transform.localPosition.x < minX)
             {
                 print("turn left");
                 direction = 1;
-                transform.localScale = new Vector2( (scale * -1) , transform.localScale.y);
             }
-            if (transform.position.x > maxX)
+            if (transform.localPosition.x > maxX)
             {
                 print("turn right");
                 direction = -1;
+            }
+
+            if(direction == 1)
+            {
+                transform.localScale = new Vector2((scale * -1), transform.localScale.y);
+            }
+            else
+            {
                 transform.localScale = new Vector2((scale), transform.localScale.y);
             }
         }
