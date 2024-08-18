@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovingSkyboxHouse : MonoBehaviour
 {
@@ -22,13 +23,15 @@ public class MovingSkyboxHouse : MonoBehaviour
     float positionClouds2;
     float positionClouds3;
 
-    public static UnityEngine.SceneManagement.Scene sceneTitle;
+    public UnityEngine.SceneManagement.Scene sceneTitle;
 
     // Start is called before the first frame update
     void Start()
     {
-        print(sceneTitle.buildIndex);
-        if (sceneTitle.buildIndex != -1)
+        sceneTitle = SceneManager.GetActiveScene();
+
+
+        if (sceneTitle.buildIndex != 0)
         {
             positionSky2 = skyBackgrounds[1].transform.position.x;
             positionSky3 = skyBackgrounds[2].transform.position.x;
@@ -38,14 +41,12 @@ public class MovingSkyboxHouse : MonoBehaviour
         }
             positionClouds2 = skyClouds[1].transform.position.x;
             positionClouds3 = skyClouds[2].transform.position.x;
-        print(positionClouds2);
-        print(positionClouds3);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (sceneTitle.buildIndex != -1) 
+        if (sceneTitle.buildIndex != 0) 
         { 
             /*Reset Background*/
             if (skyBackgrounds[0].transform.position.x <= positionSky2)
@@ -107,11 +108,10 @@ public class MovingSkyboxHouse : MonoBehaviour
         foreach (var z in skyClouds)
         {
             z.transform.position = new Vector2(z.transform.position.x - moveSpeed, z.transform.position.y);
-            print(z.transform.position.x);
         }
 
         /*Keep them in place*/
-        if(sceneTitle.buildIndex != -1)
+        if(sceneTitle.buildIndex != 0)
         {
         skyBackgrounds[2].transform.position = new Vector2(positionSky3, skyBackgrounds[0].transform.position.y);
         skyStars[2].transform.position = new Vector2(positionStar3, skyStars[0].transform.position.y);
