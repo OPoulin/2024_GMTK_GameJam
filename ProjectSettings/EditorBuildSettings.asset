@@ -5,8 +5,26 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: e0699349fa990dc4fbccddaf7fbf7cd2
+  - enabled: 1
+    path: Assets/Scenes/HomeStart.unity
+    guid: ec6b91ef75078b449894adad3a6826b8
+  - enabled: 1
+    path: Assets/Scenes/TownMarket.unity
+    guid: 915a5b8338a52cd4cacff3de7bb4ccfb
+  - enabled: 1
+    path: Assets/Scenes/Forest.unity
+    guid: 83f4e1f1c5db20145bc76a151766c320
+  - enabled: 1
+    path: Assets/Scenes/Tree.unity
+    guid: d358e112b85380c4f85faca633efbabb
+  - enabled: 1
+    path: Assets/Scenes/YouWin.unity
+    guid: 8cf04b016359f6d4b95bb1b5f8a5ca0d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4c62ab400b53c4c4aa066e6281155c3e, type: 2}
