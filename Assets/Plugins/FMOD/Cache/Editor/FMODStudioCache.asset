@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5049833334268568894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Win_background_music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Win_background_music
+  Guid:
+    Data1: 1967156510
+    Data2: 1167407849
+    Data3: -1298296158
+    Data4: 1810624362
+  Banks:
+  - {fileID: 5379503401125262480}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 390000
+--- !u!114 &-3713202280040380833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Forest_background_music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Forest_background_music
+  Guid:
+    Data1: -2083691298
+    Data2: 1296870444
+    Data3: 1666126254
+    Data4: -572563161
+  Banks:
+  - {fileID: 5379503401125262480}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 93126
 --- !u!114 &-2910667035548108552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +81,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 111483
+--- !u!114 &-2897025407835496857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Town_background_music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Town_background_music
+  Guid:
+    Data1: -1191714973
+    Data2: 1177488559
+    Data3: 736508306
+    Data4: -1277450768
+  Banks:
+  - {fileID: 5379503401125262480}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 156264
 --- !u!114 &-2491995596978057144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +150,7 @@ MonoBehaviour:
   Path: Assets/Sound/Builds/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638595137156689411
+  lastModified: 638595256808365888
   FileSizes: []
   Exists: 1
 --- !u!114 &-2280715680206225154
@@ -196,12 +277,15 @@ MonoBehaviour:
   - {fileID: -2491995596978057144}
   - {fileID: 6261548921239490577}
   - {fileID: -958202529740272432}
+  - {fileID: -5049833334268568894}
+  - {fileID: -2897025407835496857}
+  - {fileID: -3713202280040380833}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2367744868544776167}
   StringsBanks:
   - {fileID: 5176603137706298399}
-  cacheTime: 638595137175698715
+  cacheTime: 638595256889874717
   cacheVersion: 131619
 --- !u!114 &5176603137706298399
 MonoBehaviour:
@@ -218,10 +302,10 @@ MonoBehaviour:
   Path: Assets/Sound/Builds/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638595137156699408
+  lastModified: 638595256808386323
   FileSizes:
   - Name: 
-    Value: 1178
+    Value: 1334
   Exists: 1
 --- !u!114 &5379503401125262480
 MonoBehaviour:
@@ -238,7 +322,7 @@ MonoBehaviour:
   Path: Assets/Sound/Builds/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638595137175698715
+  lastModified: 638595256889874717
   FileSizes: []
   Exists: 1
 --- !u!114 &6261548921239490577
