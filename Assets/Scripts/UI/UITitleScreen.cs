@@ -25,6 +25,7 @@ public class UITitleScreen : MonoBehaviour
 
     public void StartGame()
     {
+        MusicManager.musicTitle.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         SceneManager.LoadScene("HomeStart");
     }
 
