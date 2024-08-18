@@ -19,6 +19,7 @@ public class playerMovementScript : MonoBehaviour
     public float wallJumpHeight;
     public float wallJumpHorzontal;
     bool wallMounted = false;
+    int directionOnMount;
     public float wallMountDelay;
     public GameObject wallRideRight;
     public GameObject wallRideLeft;
@@ -80,6 +81,8 @@ public class playerMovementScript : MonoBehaviour
                     //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                     speed = 0;
 
+                    directionOnMount = runDirection;
+
                 }
             }
             else
@@ -138,7 +141,7 @@ public class playerMovementScript : MonoBehaviour
 
                 rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-                wallJumpDirection = wallJumpHorzontal * -runDirection;
+                wallJumpDirection = wallJumpHorzontal * -directionOnMount;
                 rb.velocity = new Vector2(wallJumpDirection, wallJumpHeight);
 
                 mountControl = false;
@@ -178,7 +181,7 @@ public class playerMovementScript : MonoBehaviour
             isRunning = false;
             GetComponent<Animator>().SetBool("Running", false);
         }
-        else if(!wallMounted)
+        else
         {
             isRunning = true;
             GetComponent<Animator>().SetBool("Running", true);
@@ -186,11 +189,21 @@ public class playerMovementScript : MonoBehaviour
             if (context.ReadValue<float>() > 0)
             {
                 runDirection = 1;
-                GetComponent<SpriteRenderer>().flipX = false;
             }
             else if (context.ReadValue<float>() < 0)
             {
                 runDirection = -1;
+            }
+        }
+
+        if (!wallMounted)
+        {
+            if (context.ReadValue<float>() > 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (context.ReadValue<float>() < 0)
+            {
                 GetComponent<SpriteRenderer>().flipX = true;
             }
         }
