@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 2484387178737549527}
   - component: {fileID: 3460551535118168478}
   - component: {fileID: 2390248993773161281}
+  - component: {fileID: 4511897030297466152}
   m_Layer: 2
   m_Name: witch
   m_TagString: Untagged
@@ -316,6 +317,18 @@ MonoBehaviour:
   feather: {fileID: 6785576630960461090}
   boxSize: {fileID: 3668581368333872577}
   circleSize: {fileID: 9030564136992108161}
+--- !u!114 &4511897030297466152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590412951283899603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0289278fbdf634cbf82d96b210ab75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3442242558071921115
 GameObject:
   m_ObjectHideFlags: 0

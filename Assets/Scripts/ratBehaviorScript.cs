@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ratBehaviorScript : MonoBehaviour
 {
-    public int health;
-    public int maxHealth;
-    public int damage;
-
     public static float ratSpeed = 1.38f;
     public float minX;
     public float maxX;
@@ -33,7 +29,6 @@ public class ratBehaviorScript : MonoBehaviour
 
         if(!isIdle)
         {
-            print("is Walk");
             GetComponent<Animator>().SetBool("isWalk", true);
             speed = ratSpeed * direction;
             rb.velocity = new Vector2(speed, 0);
@@ -41,12 +36,10 @@ public class ratBehaviorScript : MonoBehaviour
             //change direction when hit limit
             if(transform.localPosition.x < minX)
             {
-                print("turn left");
                 direction = 1;
             }
             if (transform.localPosition.x > maxX)
             {
-                print("turn right");
                 direction = -1;
             }
 
