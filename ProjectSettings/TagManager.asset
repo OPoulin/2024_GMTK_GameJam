@@ -7,6 +7,7 @@ TagManager:
   - wall
   - No climbing
   - ObjectAcquire
+  - enemy
   layers:
   - Default
   - TransparentFX

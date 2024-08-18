@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class playerManagerScript : MonoBehaviour
 {
-    public static int Health;
-    public static int maxHealth;
+    public static int Health = 100;
+    public static int maxHealth = 100;
 
     //powerups
     public static bool nailUnlcoked = true;

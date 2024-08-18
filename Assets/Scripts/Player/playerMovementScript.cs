@@ -42,6 +42,7 @@ public class playerMovementScript : MonoBehaviour
     public GameObject circleSize;
 
     Rigidbody2D rb;
+    public bool isDead = false;
 
 
     void Start()
@@ -53,190 +54,205 @@ public class playerMovementScript : MonoBehaviour
 
     void Update()
     {
-        //this works better than clamp for some reason
-        if (speed > maxSpeed) { speed = maxSpeed; }
-        if (speed < -maxSpeed) { speed = -maxSpeed; }
-
-
-
-        //wall jump
-        if (playerManagerScript.nailUnlcoked)
+        if (!isDead)
         {
-            //if (Physics2D.OverlapBox(boxSize.transform.position, boxSize.transform.localScale, 0f) && !Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f) && isRunning)
-            if (Physics2D.OverlapBox(boxSize.transform.position, boxSize.transform.localScale, 0f) && !Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) && isRunning)
+            //this works better than clamp for some reason
+            if (speed > maxSpeed) { speed = maxSpeed; }
+            if (speed < -maxSpeed) { speed = -maxSpeed; }
+
+
+
+            //wall jump
+            if (playerManagerScript.nailUnlcoked)
             {
-                if (mountControl && !wallMounted)
+                //if (Physics2D.OverlapBox(boxSize.transform.position, boxSize.transform.localScale, 0f) && !Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.499f), 0.15f) && isRunning)
+                if (Physics2D.OverlapBox(boxSize.transform.position, boxSize.transform.localScale, 0f) && !Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) && isRunning)
                 {
-                    //wall climb conditions complete
-                    //wallMounted = true;
+                    if (mountControl && !wallMounted)
+                    {
+                        //wall climb conditions complete
+                        //wallMounted = true;
 
-                    GetComponent<SpriteRenderer>().enabled = false;
-                    if (runDirection < 0) { wallRideLeft.SetActive(true); }
-                    if (runDirection > 0) { wallRideRight.SetActive(true); }
+                        GetComponent<SpriteRenderer>().enabled = false;
+                        if (runDirection < 0) { wallRideLeft.SetActive(true); }
+                        if (runDirection > 0) { wallRideRight.SetActive(true); }
 
-                    wallMounted = true;
+                        wallMounted = true;
 
-                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                    rb.gravityScale = 0;
-                    //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-                    speed = 0;
+                        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                        rb.gravityScale = 0;
+                        //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                        speed = 0;
 
-                    directionOnMount = runDirection;
+                        directionOnMount = runDirection;
 
+                    }
+                }
+                else
+                {
+                    if (rb.velocity.magnitude != 0)
+                    {
+                        //wallMounted determines if can jump when mounted on wall
+                        wallMounted = false;
+                        rb.gravityScale = 1;
+
+                        GetComponent<SpriteRenderer>().enabled = true;
+                        wallRideLeft.SetActive(false);
+                        wallRideRight.SetActive(false);
+                    }
                 }
             }
-            else
-            {
-                if (rb.velocity.magnitude != 0)
-                {
-                    //wallMounted determines if can jump when mounted on wall
-                    wallMounted = false;
-                    rb.gravityScale = 1;
 
-                    GetComponent<SpriteRenderer>().enabled = true;
-                    wallRideLeft.SetActive(false);
-                    wallRideRight.SetActive(false);
+
+
+            //gliding
+            if (isGliding)
+            {
+                if (rb.velocity.y < 0)
+                {
+                    startGliding();
+                }
+                if (Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) || wallMounted)
+                {
+                    stopGliding();
                 }
             }
-        }
 
 
 
-        //gliding
-        if (isGliding)
-        {
-            if(rb.velocity.y < 0)
+            //if touch floor
+            if (Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x))
             {
-                startGliding();
-            }
-            if (Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) || wallMounted)
-            {
-                stopGliding();
+                canDoubleJump = true;
+                GetComponent<Animator>().SetBool("jumping", false);
             }
         }
-
-
-
-        //if touch floor
-        if(Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x))
-        {
-            canDoubleJump = true;
-            GetComponent<Animator>().SetBool("jumping", false);
-        }
+        
     }
 
 
     public void onJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!isDead)
         {
-            if (Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x))
+            if (context.performed)
             {
-                //GetComponent<Animator>().SetBool("jumping", true);
-                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-            }
-            else if (wallMounted) //wall jump
-            {
-                float wallJumpDirection;
-
-                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-                wallJumpDirection = wallJumpHorzontal * -directionOnMount;
-                rb.velocity = new Vector2(wallJumpDirection, wallJumpHeight);
-
-                mountControl = false;
-                Invoke("regainControll", wallMountDelay);
-            }
-            else if (playerManagerScript.featherUnlocked) //double jump
-            {
-                if (canDoubleJump)
+                if (Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x))
                 {
+                    //GetComponent<Animator>().SetBool("jumping", true);
                     rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-                    canDoubleJump = false;
-
-                    GetComponent<Animator>().SetBool("double jump", true);
                 }
+                else if (wallMounted) //wall jump
+                {
+                    float wallJumpDirection;
+
+                    rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+                    wallJumpDirection = wallJumpHorzontal * -directionOnMount;
+                    rb.velocity = new Vector2(wallJumpDirection, wallJumpHeight);
+
+                    mountControl = false;
+                    Invoke("regainControll", wallMountDelay);
+                }
+                else if (playerManagerScript.featherUnlocked) //double jump
+                {
+                    if (canDoubleJump)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                        canDoubleJump = false;
+
+                        GetComponent<Animator>().SetBool("double jump", true);
+                    }
+                }
+                GetComponent<Animator>().SetBool("jumping", true);
             }
-            GetComponent<Animator>().SetBool("jumping", true);
         }
     }
     public void doublejumpFeatherAnim()
     {
-        feather.SetActive(true);
-        //turn the feather depending on where player is facing but doesnt work, fuck it
-        /*if(runDirection == 1)
+        if(!isDead)
         {
-            feather.transform.localScale = new Vector3(1, feather.transform.localScale.y, feather.transform.localScale.z);
+            feather.SetActive(true);
+            //turn the feather depending on where player is facing but doesnt work, fuck it
+            /*if(runDirection == 1)
+            {
+                feather.transform.localScale = new Vector3(1, feather.transform.localScale.y, feather.transform.localScale.z);
+            }
+            if (runDirection == -1)
+            {
+                feather.transform.localScale = new Vector3(-1, feather.transform.localScale.y, feather.transform.localScale.z);
+            }*/
         }
-        if (runDirection == -1)
-        {
-            feather.transform.localScale = new Vector3(-1, feather.transform.localScale.y, feather.transform.localScale.z);
-        }*/
     }
 
     public void onRun(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<float>() == 0)
+        if (!isDead)
         {
-            isRunning = false;
-            GetComponent<Animator>().SetBool("Running", false);
-        }
-        else
-        {
-            isRunning = true;
-            GetComponent<Animator>().SetBool("Running", true);
+            if (context.ReadValue<float>() == 0)
+            {
+                isRunning = false;
+                GetComponent<Animator>().SetBool("Running", false);
+            }
+            else
+            {
+                isRunning = true;
+                GetComponent<Animator>().SetBool("Running", true);
 
-            if (context.ReadValue<float>() > 0)
-            {
-                runDirection = 1;
+                if (context.ReadValue<float>() > 0)
+                {
+                    runDirection = 1;
+                }
+                else if (context.ReadValue<float>() < 0)
+                {
+                    runDirection = -1;
+                }
             }
-            else if (context.ReadValue<float>() < 0)
+
+            if (!wallMounted)
             {
-                runDirection = -1;
+                if (context.ReadValue<float>() > 0)
+                {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                }
+                else if (context.ReadValue<float>() < 0)
+                {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }
             }
         }
-
-        if (!wallMounted)
-        {
-            if (context.ReadValue<float>() > 0)
-            {
-                GetComponent<SpriteRenderer>().flipX = false;
-            }
-            else if (context.ReadValue<float>() < 0)
-            {
-                GetComponent<SpriteRenderer>().flipX = true;
-            }
-        }
-
     }
 
 
     void FixedUpdate()
     {
-        if (isRunning)
+        if(!isDead)
         {
-            speed = speed + (acceleration * runDirection);
-            //speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed);
-            //if(speed > maxSpeed) { speed = maxSpeed;}
-            //if(speed < -maxSpeed) { speed = -maxSpeed;}
-        }
-        else
-        {
-            if (rb.velocity.x != 0)
+            if (isRunning)
             {
-                if (rb.velocity.x > 0)
+                speed = speed + (acceleration * runDirection);
+                //speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed);
+                //if(speed > maxSpeed) { speed = maxSpeed;}
+                //if(speed < -maxSpeed) { speed = -maxSpeed;}
+            }
+            else
+            {
+                if (rb.velocity.x != 0)
                 {
-                    speed = speed - deceleration;
-                }
-                else if (rb.velocity.x < 0)
-                {
-                    speed = speed + deceleration;
+                    if (rb.velocity.x > 0)
+                    {
+                        speed = speed - deceleration;
+                    }
+                    else if (rb.velocity.x < 0)
+                    {
+                        speed = speed + deceleration;
+                    }
                 }
             }
-        }
-        if (mountControl)
-        {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
+            if (mountControl)
+            {
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+            }
         }
     }
 
@@ -245,43 +261,55 @@ public class playerMovementScript : MonoBehaviour
     //gliding
     public void onGlide(InputAction.CallbackContext context)
     {
-        if (playerManagerScript.clothUnlocked)
+        if (!isDead)
         {
-            if (context.performed)
+            if (playerManagerScript.clothUnlocked)
             {
-                //if not on floor and not wall mounted
-                if (!Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) && !wallMounted)
+                if (context.performed)
                 {
-                    isGliding = true;
+                    //if not on floor and not wall mounted
+                    if (!Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) && !wallMounted)
+                    {
+                        isGliding = true;
+                    }
                 }
-            }
-            if (context.canceled)
-            {
-                stopGliding();
+                if (context.canceled)
+                {
+                    stopGliding();
+                }
             }
         }
     }
     void startGliding()
     {
-        gliderSprite.SetActive(true);
-        rb.drag = gliderFallSpeed*-1;
-        maxSpeed = gliderHorizontalSpeed;
+        if(!isDead)
+        {
+            gliderSprite.SetActive(true);
+            rb.drag = gliderFallSpeed * -1;
+            maxSpeed = gliderHorizontalSpeed;
+        }
     }
     void stopGliding()
     {
-        isGliding = false;
+        if(!isDead)
+        {
+            isGliding = false;
 
-        gliderSprite.SetActive(false);
-        rb.drag = 0;
-        maxSpeed = nonGlideSpeed;
+            gliderSprite.SetActive(false);
+            rb.drag = 0;
+            maxSpeed = nonGlideSpeed;
+        }
     }
 
 
     //funnction called by wall jumping
     void regainControll()
     {
-        //determines if you have control after wall jumping
-        speed = rb.velocity.x;
-        mountControl = true;
+        if(!isDead)
+        {
+            //determines if you have control after wall jumping
+            speed = rb.velocity.x;
+            mountControl = true;
+        }
     }
 }
