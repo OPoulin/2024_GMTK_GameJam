@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,10 +47,26 @@ public class playerMovementScript : MonoBehaviour
     public bool isDead = false;
 
 
+    //for SFXs
+    bool soundParachute = false;
+    bool soundMove = false;
+    bool soundJump = false;
+
+    //SFX events for player actions
+    public FMOD.Studio.EventInstance eventJump;
+    public FMOD.Studio.EventInstance eventMove;
+    public FMOD.Studio.EventInstance eventclimb;
+    public FMOD.Studio.EventInstance eventParachute;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         nonGlideSpeed = maxSpeed;
+
+        eventJump = RuntimeManager.CreateInstance(SFX_bank.EventJump);
+        eventclimb = RuntimeManager.CreateInstance(SFX_bank.EventWallClimb);
+        eventMove = RuntimeManager.CreateInstance(SFX_bank.EventWalk);
+        eventParachute = RuntimeManager.CreateInstance(SFX_bank.EventParachute);
     }
 
 
@@ -86,6 +104,7 @@ public class playerMovementScript : MonoBehaviour
 
                         directionOnMount = runDirection;
 
+                        eventclimb.start();
                     }
                 }
                 else
@@ -111,6 +130,11 @@ public class playerMovementScript : MonoBehaviour
                 if (rb.velocity.y < 0)
                 {
                     startGliding();
+                    if (soundParachute == false)
+                    {
+                        eventParachute.start();
+                        soundParachute = true;
+                    }
                 }
                 if (Physics2D.OverlapCircle(circleSize.transform.position, circleSize.transform.localScale.x) || wallMounted)
                 {
@@ -162,9 +186,15 @@ public class playerMovementScript : MonoBehaviour
                         canDoubleJump = false;
 
                         GetComponent<Animator>().SetBool("double jump", true);
+                        eventJump.start();
                     }
                 }
                 GetComponent<Animator>().SetBool("jumping", true);
+                if (soundJump == false)
+                {
+                    eventJump.start();
+                    soundJump = true;
+                }
             }
         }
     }
@@ -193,9 +223,11 @@ public class playerMovementScript : MonoBehaviour
             {
                 isRunning = false;
                 GetComponent<Animator>().SetBool("Running", false);
+                eventMove.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             }
             else
             {
+                eventMove.start();
                 isRunning = true;
                 GetComponent<Animator>().SetBool("Running", true);
 
@@ -298,6 +330,7 @@ public class playerMovementScript : MonoBehaviour
             gliderSprite.SetActive(false);
             rb.drag = 0;
             maxSpeed = nonGlideSpeed;
+            soundParachute = true;
         }
     }
 
