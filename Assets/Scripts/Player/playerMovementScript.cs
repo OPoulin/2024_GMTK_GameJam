@@ -53,10 +53,10 @@ public class playerMovementScript : MonoBehaviour
     bool soundJump = false;
 
     //SFX events for player actions
-    public FMOD.Studio.EventInstance eventJump;
-    public FMOD.Studio.EventInstance eventMove;
-    public FMOD.Studio.EventInstance eventclimb;
-    public FMOD.Studio.EventInstance eventParachute;
+    public static FMOD.Studio.EventInstance eventJump;
+    public static FMOD.Studio.EventInstance eventMove;
+    public static FMOD.Studio.EventInstance eventclimb;
+    public static FMOD.Studio.EventInstance eventParachute;
 
     void Start()
     {

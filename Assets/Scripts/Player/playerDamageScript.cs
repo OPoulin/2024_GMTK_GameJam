@@ -102,7 +102,7 @@ public class playerDamageScript : MonoBehaviour
         GetComponent<Animator>().SetTrigger("Death");
         GetComponent<playerMovementScript>().isDead = true;
         GetComponent<Rigidbody2D>().drag = 10;
-
+        playerMovementScript.eventMove.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         Invoke("pouf", 1);
     }
     void pouf()

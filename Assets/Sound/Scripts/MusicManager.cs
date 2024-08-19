@@ -17,20 +17,31 @@ public class MusicManager : MonoBehaviour
 
     int buildIndex;
 
-    bool once = false;
+    public static bool once = false;
 
-    // Start is called before the first frame update
-    void Start()
+    static MusicManager instance;
+
+    void Awake()
     {
-        scene = SceneManager.GetActiveScene();
-        buildIndex = scene.buildIndex;
-        print(scene.buildIndex);
-        print(scene.name);
+        if (instance == null)
+        {
+            instance = this; // In first scene, make us the singleton.
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+            Destroy(gameObject); // On reload, singleton already set, so destroy duplicate.
+    }
+
+// Start is called before the first frame update
+void Start()
+    {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        scene = SceneManager.GetActiveScene();
         if (once == false)
         {
             if (scene.name == "TitleScreen")
@@ -75,6 +86,18 @@ public class MusicManager : MonoBehaviour
             }
 
             once = true;
+        }
+
+        if (scene.buildIndex != buildIndex)
+        {
+            buildIndex = scene.buildIndex;
+            musicTitle.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            musicHouse.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            musicTown.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            musicForest.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            musicTree.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            musicWin.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            once = false;
         }
     }
 }

@@ -12,9 +12,21 @@ public class playerManagerScript : MonoBehaviour
     public static bool clothUnlocked = false;
     public static bool featherUnlocked = false;
 
+    static playerManagerScript instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this; // In first scene, make us the singleton.
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+            Destroy(gameObject); // On reload, singleton already set, so destroy duplicate.
+    }
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+
     }
 }
