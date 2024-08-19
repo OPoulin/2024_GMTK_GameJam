@@ -18,11 +18,15 @@ public class playerDamageScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        takeDamage(collision);
+        //takeDamage(collision);
     }
     void OnCollisionStay2D(Collision2D collision)
     {
         takeDamage(collision);
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        takeDamageTrigger(collision);
     }
 
 
@@ -45,6 +49,30 @@ public class playerDamageScript : MonoBehaviour
                 else
                 {
                     iFramesActive= true;
+                    Invoke("death", 0f);
+                }
+            }
+        }
+    }
+    void takeDamageTrigger(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            if (!iFramesActive)
+            {
+                int damageRecieved = collision.gameObject.GetComponent<enemyScript>().damage;
+                playerManagerScript.Health -= damageRecieved;
+
+
+                if (playerManagerScript.Health >= 0)
+                {
+                    GetComponent<Animator>().SetTrigger("Damage");
+                    iFramesActive = true;
+                    Invoke("iFrameStop", iFrameTime);
+                }
+                else
+                {
+                    iFramesActive = true;
                     Invoke("death", 0f);
                 }
             }
@@ -76,6 +104,7 @@ public class playerDamageScript : MonoBehaviour
     }
     void resetScene()
     {
+        playerManagerScript.Health = playerManagerScript.maxHealth;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
