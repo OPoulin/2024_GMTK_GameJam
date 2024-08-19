@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5980010531145491637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Plant_attack
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Plant_attack
+  Guid:
+    Data1: 757430152
+    Data2: 1167788198
+    Data3: -498309721
+    Data4: 1228515556
+  Banks:
+  - {fileID: -2280715680206225154}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1969
 --- !u!114 &-5049833334268568894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +177,7 @@ MonoBehaviour:
   Path: Assets/Sound/Builds/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638595278485474577
+  lastModified: 638596909975344932
   FileSizes: []
   Exists: 1
 --- !u!114 &-2280715680206225154
@@ -168,9 +195,36 @@ MonoBehaviour:
   Path: Assets/Sound/Builds/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638595278486191298
+  lastModified: 638596921273383191
   FileSizes: []
   Exists: 1
+--- !u!114 &-1627240275823097316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player_Damage
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player_Damage
+  Guid:
+    Data1: 1797727315
+    Data2: 1301803005
+    Data3: 1890727095
+    Data4: -452176206
+  Banks:
+  - {fileID: -2280715680206225154}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1250
 --- !u!114 &-1464854252902977736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +306,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 796
+--- !u!114 &-769465072735375270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Charge_begin
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Charge_begin
+  Guid:
+    Data1: -915354738
+    Data2: 1257666406
+    Data3: 563784329
+    Data4: 1687415305
+  Banks:
+  - {fileID: -2280715680206225154}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14000
+--- !u!114 &-182829781353986637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Charge_end
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Charge_end
+  Guid:
+    Data1: -121616303
+    Data2: 1253210646
+    Data3: 1388283313
+    Data4: -1485103105
+  Banks:
+  - {fileID: -2280715680206225154}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,13 +388,46 @@ MonoBehaviour:
   - {fileID: -5049833334268568894}
   - {fileID: -2897025407835496857}
   - {fileID: -3713202280040380833}
+  - {fileID: 6243475956124134001}
+  - {fileID: -1627240275823097316}
+  - {fileID: -5980010531145491637}
+  - {fileID: 2647501192287017422}
+  - {fileID: -182829781353986637}
+  - {fileID: -769465072735375270}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2367744868544776167}
   StringsBanks:
   - {fileID: 5176603137706298399}
-  cacheTime: 638595278486191298
+  cacheTime: 638596921273383191
   cacheVersion: 131619
+--- !u!114 &2647501192287017422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/MushroomAttack
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/MushroomAttack
+  Guid:
+    Data1: 197572015
+    Data2: 1137052055
+    Data3: 488945341
+    Data4: 1355127316
+  Banks:
+  - {fileID: -2280715680206225154}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &5176603137706298399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,10 +443,10 @@ MonoBehaviour:
   Path: Assets/Sound/Builds/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638595278485484570
+  lastModified: 638596909975354928
   FileSizes:
   - Name: 
-    Value: 1334
+    Value: 1622
   Exists: 1
 --- !u!114 &5379503401125262480
 MonoBehaviour:
@@ -322,9 +463,36 @@ MonoBehaviour:
   Path: Assets/Sound/Builds/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638595278486161293
+  lastModified: 638596921273083352
   FileSizes: []
   Exists: 1
+--- !u!114 &6243475956124134001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player_Death
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player_Death
+  Guid:
+    Data1: -1387060432
+    Data2: 1286578606
+    Data3: 43139726
+    Data4: 65371987
+  Banks:
+  - {fileID: -2280715680206225154}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3625
 --- !u!114 &6261548921239490577
 MonoBehaviour:
   m_ObjectHideFlags: 0

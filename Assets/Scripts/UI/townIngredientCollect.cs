@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using FMODUnity;
+using FMOD.Studio;
 
 public class townIngredientCollect : MonoBehaviour
 {
@@ -19,6 +21,13 @@ public class townIngredientCollect : MonoBehaviour
     public bool acornCollect = false;
     public bool mushroomCollect = false;
 
+    EventInstance SFXChargeBegin;
+
+
+    private void Start()
+    {
+        SFXChargeBegin = RuntimeManager.CreateInstance(SFX_bank.EventPlayerChargeBegin);
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -48,6 +57,7 @@ public class townIngredientCollect : MonoBehaviour
     }
     public void shrink()
     {
+        SFXChargeBegin.start();
         GetComponent<Animator>().SetBool("Charge", true);
         GetComponent<PlayerInput>().enabled = false;
         Invoke("startShrink", shrinkDelay);
@@ -72,7 +82,8 @@ public class townIngredientCollect : MonoBehaviour
     void stopShrink()
     {
         isShrinking = false;
-
+        SFXChargeBegin.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        RuntimeManager.PlayOneShot(SFX_bank.EventPlayerChargeEnd);
         GetComponent<Animator>().SetBool("Charge", false);
         GetComponent<PlayerInput>().enabled = true;
     }
