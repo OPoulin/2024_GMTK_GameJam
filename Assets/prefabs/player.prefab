@@ -119,7 +119,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -1242654790, guid: 22e3a91033e2e4c469d87b6c25221ae0, type: 3}
+  m_Sprite: {fileID: 2021846620, guid: 61b8d4e2cd7cf4e4782c6d3f1a65a113, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -183,8 +183,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008339465, y: 0.61892134}
-  m_Size: {x: 0.6219547, y: 1.275988}
+  m_Offset: {x: -0.008339465, y: 0.66159034}
+  m_Size: {x: 0.6219547, y: 1.19065}
   m_Direction: 0
 --- !u!50 &2484387178737549527
 Rigidbody2D:
@@ -334,6 +334,7 @@ MonoBehaviour:
   damage: 0
   iFrameTime: 0
   iFramesActive: 0
+  HealthBar: {fileID: 0}
   deathSmokeEffect: {fileID: 5731042311210733625}
   nail1: {fileID: 3772680356966514079}
   nail2: {fileID: 13016868342453770}
