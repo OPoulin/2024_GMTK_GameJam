@@ -8,6 +8,7 @@ TagManager:
   - No climbing
   - ObjectAcquire
   - enemy
+  - ingredient
   layers:
   - Default
   - TransparentFX
