@@ -47,7 +47,6 @@ public class townIngredientCollect : MonoBehaviour
                 GetComponent<PlayerInput>().enabled = false;
                 Invoke("startShrink", shrinkDelay);
 
-                GetComponent<Rigidbody2D>().gravityScale = -0.5f;
             }
         }
     }
@@ -74,7 +73,5 @@ public class townIngredientCollect : MonoBehaviour
 
         GetComponent<Animator>().SetBool("Charge", false);
         GetComponent<PlayerInput>().enabled = true;
-
-        GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 }
