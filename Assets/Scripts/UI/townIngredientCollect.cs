@@ -42,13 +42,15 @@ public class townIngredientCollect : MonoBehaviour
                 mushroom.color = new Color(255, 255, 255);
                 Destroy(collision.gameObject);
 
-                //shrink
-                GetComponent<Animator>().SetBool("Charge", true);
-                GetComponent<PlayerInput>().enabled = false;
-                Invoke("startShrink", shrinkDelay);
-
+                shrink();
             }
         }
+    }
+    void shrink()
+    {
+        GetComponent<Animator>().SetBool("Charge", true);
+        GetComponent<PlayerInput>().enabled = false;
+        Invoke("startShrink", shrinkDelay);
     }
 
     void FixedUpdate()
