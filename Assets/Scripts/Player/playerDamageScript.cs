@@ -1,14 +1,19 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Image = UnityEngine.UI.Image;
 
 public class playerDamageScript : MonoBehaviour
 {
     public int damage;
     public float iFrameTime;
     public bool iFramesActive = false;
+
+    public Image HealthBar;
 
     public GameObject deathSmokeEffect;
     public GameObject nail1;
@@ -39,6 +44,7 @@ public class playerDamageScript : MonoBehaviour
                 int damageRecieved = collision.gameObject.GetComponent<enemyScript>().damage;
                 playerManagerScript.Health -= damageRecieved;
 
+                //decreas healthbar
 
                 if (playerManagerScript.Health >= 0)
                 {
@@ -63,6 +69,8 @@ public class playerDamageScript : MonoBehaviour
                 int damageRecieved = collision.gameObject.GetComponent<enemyScript>().damage;
                 playerManagerScript.Health -= damageRecieved;
 
+                float barFill = (float)playerManagerScript.Health / (float)playerManagerScript.maxHealth;
+                HealthBar.fillAmount = barFill;
 
                 if (playerManagerScript.Health >= 0)
                 {
