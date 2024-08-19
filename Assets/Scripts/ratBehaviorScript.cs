@@ -13,17 +13,25 @@ public class ratBehaviorScript : MonoBehaviour
 
     public bool isAttacking;
 
+    bool canTurn = true;
+
+    public GameObject player;
+
     float scale;
     Rigidbody2D rb;
 
 
     private void Start()
     {
-        GetComponent<Animator>().SetBool("isWalk", true);
+        if (name != "Plant") 
+        { 
+            GetComponent<Animator>().SetBool("isWalk", true);
+        }
 
         isIdle = false;
         rb = GetComponent<Rigidbody2D>();
         scale = transform.localScale.x;
+        print(scale);
     }
     void Update()
     {
@@ -57,7 +65,10 @@ public class ratBehaviorScript : MonoBehaviour
                 }
             }
         }
-        else if (name == "MushroomMan")
+        
+        
+        
+        if (name == "MushroomMan")
         {
             if (!isIdle)
             {
@@ -98,6 +109,35 @@ public class ratBehaviorScript : MonoBehaviour
                 Invoke("IdleFalse", 1.6f);
             }
         }
+        
+        
+        if (name == "Plant")
+        {
+
+            if (GetComponent<Animator>().GetBool("isAttack") == true && isIdle == false)
+            {
+                print("I'm bouta attack");
+                Invoke("AttackFalse", 1f);
+                Invoke("IdleFalse", 1f);
+                isIdle = true;
+                canTurn = false;
+            }
+
+            if (canTurn)
+            {
+                if (player.transform.position.x - transform.position.x > 0)
+                {
+                    transform.localScale = new Vector2 (scale * -1, transform.localScale.y);
+                } 
+                else if (player.transform.position.x - transform.position.x < 0)
+                {
+                    transform.localScale = new Vector2 (scale, transform.localScale.y);
+                }
+                print("I will turn");
+            }
+
+            print(player.transform.position.x - transform.position.x);
+        }
     }
 
     void AttackFalse()
@@ -107,6 +147,7 @@ public class ratBehaviorScript : MonoBehaviour
 
     void IdleFalse()
     {
+        canTurn = true;
         isIdle = false;
         rb.drag = 0f;
     }
