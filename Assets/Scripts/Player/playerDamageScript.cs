@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Image = UnityEngine.UI.Image;
+using FMOD.Studio;
 
 public class playerDamageScript : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class playerDamageScript : MonoBehaviour
     public GameObject nail2;
     public GameObject glider;
     public GameObject feather;
+
+    public static EventInstance SFXPlayerDamage;
+    public static EventInstance SFXPlayerDeath;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -49,13 +53,14 @@ public class playerDamageScript : MonoBehaviour
                 int damageRecieved = collision.gameObject.GetComponent<enemyScript>().damage;
                 playerManagerScript.Health -= damageRecieved;
 
-                //decreas healthbar
+                //decrease healthbar
 
                 if (playerManagerScript.Health >= 0)
                 {
                     GetComponent<Animator>().SetTrigger("Damage");
                     iFramesActive = true;
                     Invoke("iFrameStop", iFrameTime);
+                    SFXPlayerDamage.start();
                 }
                 else
                 {
@@ -99,6 +104,7 @@ public class playerDamageScript : MonoBehaviour
 
     void death()
     {
+        SFXPlayerDeath.start();
         GetComponent<Animator>().SetTrigger("Death");
         GetComponent<playerMovementScript>().isDead = true;
         GetComponent<Rigidbody2D>().drag = 10;

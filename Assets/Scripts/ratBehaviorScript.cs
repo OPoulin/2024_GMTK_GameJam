@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,9 @@ public class ratBehaviorScript : MonoBehaviour
 
     float scale;
     Rigidbody2D rb;
+
+    public static EventInstance SFXMushroomAttack;
+    public static EventInstance SFXPlantAttack;
 
 
     private void Start()
@@ -98,6 +102,7 @@ public class ratBehaviorScript : MonoBehaviour
 
             if (GetComponent<Animator>().GetBool("isAttack") == true && !isIdle)
             {
+                SFXMushroomAttack.start();
                 print("I'm bouta attack");
                 Invoke("AttackFalse", 1.2f);
                 isIdle = true;
@@ -116,6 +121,7 @@ public class ratBehaviorScript : MonoBehaviour
 
             if (GetComponent<Animator>().GetBool("isAttack") == true && isIdle == false)
             {
+                SFXPlantAttack.start();
                 print("I'm bouta attack");
                 Invoke("AttackFalse", 1f);
                 Invoke("IdleFalse", 1f);
