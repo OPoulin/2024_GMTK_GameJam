@@ -33,3 +33,4 @@ the game is made in unity and published <a href="https://massimo-trimboli.itch.i
              </dt><dt><a href="https://ansimuz.itch.io/sunnyland-forest" >sunnyland forest by Ansimuz</a></dt></dl></dt></dl></dt><dt><dl></dl></dt></dl>
              </dt><dt><a href="https://static.wikia.nocookie.net/sun-haven/images/c/cd/Acorn.png/revision/latest?cb=20231011141140" >acorn</a></dt></dl></dt></dl></dt><dt><dl></dl></dt></dl>
              </dt><dt><a href="https://static.vecteezy.com/system/resources/previews/019/017/601/original/an-8-bit-retro-styled-pixel-art-illustration-of-a-strawberry-free-png.png" >strawberry </a></dt></dl></dt></dl></dt><dt><dl></dl></dt></dl>
+             </dt><dt><a href="https://nyknck.itch.io/wind" >wind by nyknck </a></dt></dl></dt></dl></dt><dt><dl></dl></dt></dl>
