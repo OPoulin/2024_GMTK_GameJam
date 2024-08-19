@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Image = UnityEngine.UI.Image;
 using FMOD.Studio;
+using FMODUnity;
 
 public class playerDamageScript : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class playerDamageScript : MonoBehaviour
                     GetComponent<Animator>().SetTrigger("Damage");
                     iFramesActive = true;
                     Invoke("iFrameStop", iFrameTime);
-                    SFXPlayerDamage.start();
+                    RuntimeManager.PlayOneShot(SFX_bank.EventPlayerDamage);
                 }
                 else
                 {
@@ -104,7 +105,7 @@ public class playerDamageScript : MonoBehaviour
 
     void death()
     {
-        SFXPlayerDeath.start();
+        RuntimeManager.PlayOneShot(SFX_bank.EventPlayerDeath);
         GetComponent<Animator>().SetTrigger("Death");
         GetComponent<playerMovementScript>().isDead = true;
         GetComponent<Rigidbody2D>().drag = 10;

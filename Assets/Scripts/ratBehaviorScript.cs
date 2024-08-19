@@ -1,4 +1,5 @@
 using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -102,7 +103,7 @@ public class ratBehaviorScript : MonoBehaviour
 
             if (GetComponent<Animator>().GetBool("isAttack") == true && !isIdle)
             {
-                SFXMushroomAttack.start();
+                RuntimeManager.PlayOneShot(SFX_bank.EventMushroomAttack);
                 print("I'm bouta attack");
                 Invoke("AttackFalse", 1.2f);
                 isIdle = true;
@@ -121,7 +122,7 @@ public class ratBehaviorScript : MonoBehaviour
 
             if (GetComponent<Animator>().GetBool("isAttack") == true && isIdle == false)
             {
-                SFXPlantAttack.start();
+                RuntimeManager.PlayOneShot(SFX_bank.EventPlantAttack);
                 print("I'm bouta attack");
                 Invoke("AttackFalse", 1f);
                 Invoke("IdleFalse", 1f);

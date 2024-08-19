@@ -50,7 +50,6 @@ public class playerMovementScript : MonoBehaviour
     //for SFXs
     bool soundParachute = false;
     bool soundMove = false;
-    bool soundJump = false;
 
     //SFX events for player actions
     public static FMOD.Studio.EventInstance eventJump;
@@ -132,7 +131,7 @@ public class playerMovementScript : MonoBehaviour
                     startGliding();
                     if (soundParachute == false)
                     {
-                        eventParachute.start();
+                        RuntimeManager.PlayOneShot(SFX_bank.EventParachute);
                         soundParachute = true;
                     }
                 }
@@ -165,6 +164,7 @@ public class playerMovementScript : MonoBehaviour
                 {
                     //GetComponent<Animator>().SetBool("jumping", true);
                     rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                    RuntimeManager.PlayOneShot(SFX_bank.EventJump);
                 }
                 else if (wallMounted) //wall jump
                 {
@@ -174,6 +174,7 @@ public class playerMovementScript : MonoBehaviour
 
                     wallJumpDirection = wallJumpHorzontal * -directionOnMount;
                     rb.velocity = new Vector2(wallJumpDirection, wallJumpHeight);
+                    RuntimeManager.PlayOneShot(SFX_bank.EventJump);
 
                     mountControl = false;
                     Invoke("regainControll", wallMountDelay);
@@ -184,17 +185,14 @@ public class playerMovementScript : MonoBehaviour
                     {
                         rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
                         canDoubleJump = false;
+                        RuntimeManager.PlayOneShot(SFX_bank.EventJump);
 
                         GetComponent<Animator>().SetBool("double jump", true);
                         eventJump.start();
                     }
                 }
                 GetComponent<Animator>().SetBool("jumping", true);
-                if (soundJump == false)
-                {
-                    eventJump.start();
-                    soundJump = true;
-                }
+
             }
         }
     }

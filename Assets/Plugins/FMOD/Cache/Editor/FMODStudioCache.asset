@@ -26,7 +26,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1500
+  Length: 1969
 --- !u!114 &-5049833334268568894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
   Path: Assets/Sound/Builds/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638596840033918734
+  lastModified: 638596851747263213
   FileSizes: []
   Exists: 1
 --- !u!114 &-1627240275823097316
@@ -343,7 +343,7 @@ MonoBehaviour:
   - {fileID: -2367744868544776167}
   StringsBanks:
   - {fileID: 5176603137706298399}
-  cacheTime: 638596840033918734
+  cacheTime: 638596851747263213
   cacheVersion: 131619
 --- !u!114 &2647501192287017422
 MonoBehaviour:
