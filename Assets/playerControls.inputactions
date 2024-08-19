@@ -35,7 +35,7 @@
             ],
             "bindings": [
                 {
-                    "name": "1D Axis keyboard",
+                    "name": "1D Axis keyboard wasd",
                     "id": "0f9b0957-9e5d-4904-891f-64d4098097db",
                     "path": "1DAxis",
                     "interactions": "",
@@ -68,6 +68,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "1D Axis keyboard arrow keys",
+                    "id": "b9eb9dc3-523d-4caa-ad02-a39312736f21",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "walk",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "18fd75d9-b7ca-4115-bb73-7a1c9359a82c",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "4af42a2d-a8f2-4cf8-ba68-9fd2ef917be1",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "620b8b48-e8ac-4d65-9942-aa3e28eb8567",
                     "path": "<Keyboard>/space",
@@ -91,6 +124,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4e5fedee-b304-4db8-b3f7-39a9e365e8ed",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "20cb23dc-bfd9-43c0-becf-2fe1dbdc20ae",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -104,6 +148,17 @@
                     "name": "",
                     "id": "c3564421-5a6a-42ae-aab7-34aa98650862",
                     "path": "<Keyboard>/#(W)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "glide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e859209-115a-4d81-a2c7-31af6b567367",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
