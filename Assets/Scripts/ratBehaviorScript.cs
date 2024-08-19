@@ -22,9 +22,6 @@ public class ratBehaviorScript : MonoBehaviour
     float scale;
     Rigidbody2D rb;
 
-    public static EventInstance SFXMushroomAttack;
-    public static EventInstance SFXPlantAttack;
-
 
     private void Start()
     {
