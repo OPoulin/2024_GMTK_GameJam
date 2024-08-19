@@ -85,11 +85,14 @@ public class ratBehaviorScript : MonoBehaviour
                 }
             }
 
-            if (GetComponent<Animator>().GetBool("isAttack") == true)
+            if (GetComponent<Animator>().GetBool("isAttack") == true && !isIdle)
             {
                 print("I'm bouta attack");
+                Invoke("AttackFalse", 1.2f);
                 isIdle = true;
-                GetComponent<Animator>().SetBool("isAttack", false);
+                GetComponent<Animator>().SetBool("isWalk", false);
+                speed = 0;
+                rb.drag = 1500f;
                 GetComponent<Animator>().SetBool("isWalk", false);
                 CancelInvoke("IdleFalse");
                 Invoke("IdleFalse", 1.6f);
@@ -97,8 +100,14 @@ public class ratBehaviorScript : MonoBehaviour
         }
     }
 
+    void AttackFalse()
+    {
+        GetComponent<Animator>().SetBool("isAttack", false);
+    }
+
     void IdleFalse()
     {
         isIdle = false;
+        rb.drag = 0f;
     }
 }
