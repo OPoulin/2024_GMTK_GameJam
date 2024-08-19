@@ -10,6 +10,7 @@ TagManager:
   - enemy
   - ingredient
   - Music manager
+  - endZone
   layers:
   - Default
   - TransparentFX
