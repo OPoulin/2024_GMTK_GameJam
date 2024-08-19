@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ratBehaviorScript : MonoBehaviour
 {
-    public static float ratSpeed = 1.38f;
+    public float ratSpeed = 1.38f;
     public float minX;
     public float maxX;
     public int direction;
