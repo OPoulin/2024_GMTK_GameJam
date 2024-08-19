@@ -11,6 +11,8 @@ public class ratBehaviorScript : MonoBehaviour
 
     public bool isIdle;
 
+    public bool isAttacking;
+
     float scale;
     Rigidbody2D rb;
 
@@ -27,30 +29,76 @@ public class ratBehaviorScript : MonoBehaviour
     {
             float speed;
 
-        if(!isIdle)
+        if (name == "rat")
         {
-            GetComponent<Animator>().SetBool("isWalk", true);
-            speed = ratSpeed * direction;
-            rb.velocity = new Vector2(speed, 0);
+            if(!isIdle)
+            {
+                GetComponent<Animator>().SetBool("isWalk", true);
+                speed = ratSpeed * direction;
+                rb.velocity = new Vector2(speed, 0);
 
-            //change direction when hit limit
-            if(transform.localPosition.x < minX)
-            {
-                direction = 1;
-            }
-            if (transform.localPosition.x > maxX)
-            {
-                direction = -1;
-            }
+                //change direction when hit limit
+                if(transform.localPosition.x < minX)
+                {
+                    direction = 1;
+                }
+                if (transform.localPosition.x > maxX)
+                {
+                    direction = -1;
+                }
 
-            if(direction == 1)
-            {
-                transform.localScale = new Vector2((scale * -1), transform.localScale.y);
-            }
-            else
-            {
-                transform.localScale = new Vector2((scale), transform.localScale.y);
+                if(direction == 1)
+                {
+                    transform.localScale = new Vector2((scale * -1), transform.localScale.y);
+                }
+                else
+                {
+                    transform.localScale = new Vector2((scale), transform.localScale.y);
+                }
             }
         }
+        else if (name == "MushroomMan")
+        {
+            if (!isIdle)
+            {
+                GetComponent<Animator>().SetBool("isWalk", true);
+                speed = ratSpeed * direction;
+                rb.velocity = new Vector2(speed, 0);
+
+                //change direction when hit limit
+                if (transform.localPosition.x < minX)
+                {
+                    direction = 1;
+                }
+                if (transform.localPosition.x > maxX)
+                {
+                    direction = -1;
+                }
+
+                if (direction == 1)
+                {
+                    transform.localScale = new Vector2((scale * -1), transform.localScale.y);
+                }
+                else
+                {
+                    transform.localScale = new Vector2((scale), transform.localScale.y);
+                }
+            }
+
+            if (GetComponent<Animator>().GetBool("isAttack") == true)
+            {
+                print("I'm bouta attack");
+                isIdle = true;
+                GetComponent<Animator>().SetBool("isAttack", false);
+                GetComponent<Animator>().SetBool("isWalk", false);
+                CancelInvoke("IdleFalse");
+                Invoke("IdleFalse", 1.6f);
+            }
+        }
+    }
+
+    void IdleFalse()
+    {
+        isIdle = false;
     }
 }

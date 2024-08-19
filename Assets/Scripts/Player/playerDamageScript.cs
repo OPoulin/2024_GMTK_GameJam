@@ -29,6 +29,11 @@ public class playerDamageScript : MonoBehaviour
     {
         takeDamage(collision);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        takeDamageTrigger(collision);
+    }
     void OnTriggerStay2D(Collider2D collision)
     {
         takeDamageTrigger(collision);
