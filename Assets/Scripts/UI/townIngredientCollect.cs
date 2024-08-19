@@ -46,7 +46,7 @@ public class townIngredientCollect : MonoBehaviour
             }
         }
     }
-    void shrink()
+    public void shrink()
     {
         GetComponent<Animator>().SetBool("Charge", true);
         GetComponent<PlayerInput>().enabled = false;
