@@ -331,8 +331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0289278fbdf634cbf82d96b210ab75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  iFrameTime: 0
+  damage: 20
+  iFrameTime: 1
   iFramesActive: 0
   HealthBar: {fileID: 0}
   deathSmokeEffect: {fileID: 5731042311210733625}

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class townIngredientCollect : MonoBehaviour
 {
-    bool strawberryCollect = false;
-    bool acornCollect = false;
-    bool mushroomCollect = false;
+    public bool strawberryCollect = false;
+    public bool acornCollect = false;
+    public bool mushroomCollect = false;
 
     public Image strawberry;
     public Image acorn;
