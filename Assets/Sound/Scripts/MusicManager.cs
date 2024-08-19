@@ -22,7 +22,10 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scene = SceneManager.GetActiveScene();
         buildIndex = scene.buildIndex;
+        print(scene.buildIndex);
+        print(scene.name);
     }
 
     // Update is called once per frame
@@ -30,35 +33,45 @@ public class MusicManager : MonoBehaviour
     {
         if (once == false)
         {
-            if (buildIndex == 0)
+            if (scene.name == "TitleScreen")
             {
                 musicTitle = RuntimeManager.CreateInstance(Music_bank.MusicTitle);
                 musicTitle.start();
+                print("Music Title start");
             }
-            else if (buildIndex == 1)
+            else if (scene.name == "HomeStart")
             {
                 musicHouse = RuntimeManager.CreateInstance(Music_bank.MusicHouse);
                 musicHouse.start();
+                print("Music House start");
             }
-            else if (buildIndex == 2)
+            else if (scene.name == "TownMarket")
             {
                 musicTown = RuntimeManager.CreateInstance(Music_bank.MusicTown); 
                 musicTown.start();
+                print("Music Town start");
             }
-            else if (buildIndex == 3)
+            else if (scene.name == "Forest")
             {
                 musicForest = RuntimeManager.CreateInstance(Music_bank.MusicForest);
                 musicForest.start();
+                print("Music Forest start");
             }
-            else if (buildIndex == 4)
+            else if (scene.name == "Tree")
             {
                 musicTree = RuntimeManager.CreateInstance(Music_bank.MusicTree);
                 musicTree.start();
+                print("Music Tree start");
             }
-            else if (buildIndex == 5)
+            else if (scene.name == "YouWin")
             {
                 musicWin = RuntimeManager.CreateInstance(Music_bank.MusicWin);
                 musicWin.start();
+                print("Music Win start");
+            }
+            else
+            {
+               Debug.Log("Music start fail");
             }
 
             once = true;
