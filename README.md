@@ -3,7 +3,7 @@
 <p>the idea behind our game is that you will shrink progressively throughout the game and traverse the world at a smaller scale, discovering both the advantages and dangers of becoming small.</p>
 <p>As the player shrinks, they will discover new abilities only available to them due to&nbsp;their new found scale while also growing weaker and&nbsp; discovering the greater dangers of&nbsp;their once harmless surroundings.</p>
 <p>credits:</p>
-<p>Massimo Trimboli and Olivier Poulin</p>
+<p><a href="https://massimo-trimboli.itch.io/">Massimo Trimboli (me)</a> and <a href="https://mywnn.itch.io/">Olivier Poulin</a></p>
 <p></p>
 <h2>Lastly I hope you enjoy our tiny little game about a tiny little witch trying to get some rest, I'm off to get some myself.</h2>
 <br></br>
