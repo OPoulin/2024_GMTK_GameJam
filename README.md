@@ -1,11 +1,13 @@
-<p>This is a 2 students project made for the GMTK 2024 Game Jam around the theme "Built to Scale".
-the game is made in unity and published <a href="https://massimo-trimboli.itch.io/eepy-teeny-witchy">here</a></p>
+<p>Game made in 4 days by 2 students&nbsp;for the&nbsp;<a href="https://itch.io/jam/gmtk-2024">GMTK Game Jam 2024</a> the game is made in unity and published <a href="https://massimo-trimboli.itch.io/eepy-teeny-witchy">here.</a></p>
+<p>The Theme is "Built to Scale".</p>
+<p>the idea behind our game is that you will shrink progressively throughout the game and traverse the world at a smaller scale, discovering both the advantages and dangers of becoming small.</p>
+<p>As the player shrinks, they will discover new abilities only available to them due to&nbsp;their new found scale while also growing weaker and&nbsp; discovering the greater dangers of&nbsp;their once harmless surroundings.</p>
+<p>credits:</p>
+<p>Massimo Trimboli and Olivier Poulin</p>
+<p></p>
+<h2>Lastly I hope you enjoy our tiny little game about a tiny little witch trying to get some rest, I'm off to get some myself.</h2>
+<br></br>
 <p>Not all assets were made by us but they were all allowed under their different licenses. they will be listed here below</p>
-<br></br>
-<h3>Lastly I hope you enjoy our tiny little game about a tiny little witch trying to get some rest, I'm off to get some myself.</h3>
-<br></br>
-
-
 </dt><dt><h2 add_date="1723836250" last_modified="1723948155">GameJam assets  used (not made by us)</h2>
         <dl><p>
             </p><dt><a href="https://ansimuz.itch.io/sunny-land-pixel-game-art" add_date="1723836238" icon="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAC8klEQVQ4jQXBS2xUVRgA4P+ce+5r7r0zfTF2WhRmKBWaVpBoQ4ON1dBgJIIJsCCQqFETNmBi4iMxakLCAhfGuDExYcECYlh0YVj4iAshLZSptJhoSzva6Yu29jGPe+femXvOf47fR16uyBRRXURxCpGlRRSaFLTPbjAC6907uII2gGKEKImLqp0Sdlzh3zrjCg6MTeTv3AtKVeYkpourvCH1rozjeU/icN9A//KR/jaD1REZoaRHCP/Wjzyo2ygyz+1rYUx27drUdRdVEsUzTsLljczi4wdP77F0k6UIecTj2d9HRf7hmatf9p0YGlWABNIAHQDPAmwVZz/9/oOdk3ve//DraSlpb4zvJO3hC29txnx76o/mUvjSWpBb9QcC2F9BWqrfGfm2OdwaPPZ2m2W8ipIlNWJyeSDh6hdOdfbs1WyjurpS+Pwj1UpUz0Dnu5fQ7T558rUXn38hDBqSAvmiGghFDMc2QDU4SqKq45P9Vy7uyLSNNpzws8te7/64LkGEEdi1BmUjTyyFkvpLdG2Jzs8Fr58/dO16tt3MvXFoeXTxakEwB2gtjDYqh0u3jgzuZGSbevd/sIsPY6Tlw+f2Tj46gYU/N+X18fhxebfW0eeO3adTvwzm6q/Ub7bGGWYWJuxivlyumxi1LNwLktnvRJ84fbbckTU03VlZSE6ObG9EvbtmNLF2+2efDH1yefW322xrs8Sh6gegm+C42OAtpiFVXKkEGlEAisRw82M4/l43a/zz11px5ZuhzBLHepxo1qVCUVb6bk+7sdhy9KBuUI1JWZHsza/mj03pbH7sLgd9+Smv0w1AWRGnQqpWSYUph9JmNkWDiDKqPJ1pd41ff5ogAABE071WRU0lJXJuWEYcI6C0DRFJGwCJkgok1DYAgBwdHm5KpSzTyufH0+l0Lpedmys0Nacs00o4yfl/57xkKpGwmaYLxOmZGc22EwIFAJQrVY3piGphYcl1PS7Q930/CAmhiKpWC9fX//N9/3/kdX657pZXfAAAAABJRU5ErkJggg==">Sunny Land - Pixel Game Art Collection by ansimuz</a>
