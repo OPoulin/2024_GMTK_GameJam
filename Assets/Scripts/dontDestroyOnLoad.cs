@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
@@ -21,7 +20,7 @@ public class dontDestroyOnLoad : MonoBehaviour
 
     private void Update()
     {
-        if (gameObject.name == "Canvas" && SceneManager.GetActiveScene().name == "TitleScreen")
+        if (gameObject.name == "CanvasPause" && SceneManager.GetActiveScene().name == "TitleScreen")
         {
             Destroy(gameObject);
         }
