@@ -1625,8 +1625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c6385a2670bfa42b012c7260f838bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desiredShrink: 1
-  shrinkDelay: 0.7
+  desiredShrink: 0.025
+  shrinkDelay: 1
   strawberry: {fileID: 0}
   acorn: {fileID: 0}
   mushroom: {fileID: 0}

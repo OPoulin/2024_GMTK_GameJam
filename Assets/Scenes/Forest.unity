@@ -2014,7 +2014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   maxHealth: 1
-  damage: 23
+  damage: 25
 --- !u!114 &627018754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2486,7 +2486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   maxHealth: 1
-  damage: 23
+  damage: 25
 --- !u!1001 &653856164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3116,7 +3116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   maxHealth: 1
-  damage: 23
+  damage: 25
 --- !u!114 &782080003
 MonoBehaviour:
   m_ObjectHideFlags: 0

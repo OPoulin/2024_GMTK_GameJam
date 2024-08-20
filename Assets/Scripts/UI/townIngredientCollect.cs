@@ -21,12 +21,19 @@ public class townIngredientCollect : MonoBehaviour
     public bool acornCollect = false;
     public bool mushroomCollect = false;
 
+    float scale;
+
+    float startScale;
+
     EventInstance SFXChargeBegin;
 
 
     private void Start()
     {
         SFXChargeBegin = RuntimeManager.CreateInstance(SFX_bank.EventPlayerChargeBegin);
+        startScale = transform.localScale.x;
+        print(startScale);
+        scale = startScale;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -50,7 +57,7 @@ public class townIngredientCollect : MonoBehaviour
                 mushroomCollect = true;
                 mushroom.color = new Color(255, 255, 255);
                 Destroy(collision.gameObject);
-
+                playerManagerScript.nailUnlcoked = false;
                 shrink();
             }
         }
@@ -69,8 +76,14 @@ public class townIngredientCollect : MonoBehaviour
         {
             if (isShrinking)
             {
-                    transform.localScale = new Vector3(desiredShrink, desiredShrink, desiredShrink);
+                    if (scale == startScale) 
+                    {  
                     Invoke("stopShrink", shrinkDelay);
+                    print("WE gon stop");
+                    }
+                    transform.localScale = new Vector3(scale - desiredShrink, scale - desiredShrink, scale - desiredShrink);
+                    scale -= desiredShrink;
+                print(scale);
             }
         }
     }
