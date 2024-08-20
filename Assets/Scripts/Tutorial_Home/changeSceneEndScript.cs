@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeLevelTown : MonoBehaviour
+public class changeSceneEndScript : MonoBehaviour
 {
+    //script is copy pasted from "ChangeLevelTown.cs"
 
     public GameObject Player;
     public GameObject Window;
@@ -29,9 +30,10 @@ public class ChangeLevelTown : MonoBehaviour
         Arrow.SetActive(false);
     }
 
-    void ChangeSceneTown() 
-    { 
+    void ChangeSceneTown()
+    {
         MusicManager.musicHouse.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        SceneManager.LoadScene("TownMarket");
+        //SceneManager.LoadScene("TownMarket");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
