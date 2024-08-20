@@ -14,4 +14,5 @@ public class SFX_bank : MonoBehaviour
     public static string EventPlayerDeath = "event:/SFX/Player_Death";
     public static string EventPlayerChargeBegin = "event:/SFX/Charge_begin";
     public static string EventPlayerChargeEnd = "event:/SFX/Charge_end";
+    public static string EventKnockCutscene = "event:/SFX/Cutscene_knock";
 }

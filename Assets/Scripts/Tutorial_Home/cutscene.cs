@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class cutscene : MonoBehaviour
     void Start()
     {
         witch.GetComponent<PlayerInput>().enabled = false;
+        RuntimeManager.PlayOneShot(SFX_bank.EventKnockCutscene);
     }
 
 
