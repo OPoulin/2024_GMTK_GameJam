@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
 
     public static bool isPaused;
 
+    /*
     void Awake()
     {
         if (instance == null)
@@ -26,7 +27,7 @@ public class PauseMenu : MonoBehaviour
         }
         else if (instance != this)
             Destroy(gameObject); // On reload, singleton already set, so destroy duplicate.
-    }
+    }*/
 
     // Update is called once per frame
     void Update()

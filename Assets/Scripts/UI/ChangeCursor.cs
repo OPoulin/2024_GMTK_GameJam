@@ -20,17 +20,17 @@ public class ChangeCursor : MonoBehaviour
     {
         /*DOES NOT INCLUDE PAUSE MENU*/
 
-        if(scene.name != "TitleScreen")
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            print("Cursor gone");
-        }
-        else if(PauseMenu.isPaused)
+        if(PauseMenu.isPaused)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             print("Cursor appear");
+        }
+        else if(scene.name != "TitleScreen")
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            print("Cursor gone");
         }
         else 
         {
@@ -38,5 +38,6 @@ public class ChangeCursor : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             print("Cursor appear");
         }
+        print(PauseMenu.isPaused);
     }
 }
