@@ -54,7 +54,7 @@ public class cameraScript : MonoBehaviour
             else if (target.transform.position.x > 117f)
             {
                 minY = 0.78f;
-                targetPosition = new Vector3 (target.transform.position.x, minY, -10f);
+                targetPosition = new Vector3 (target.transform.position.x, target.transform.position.y, -10f);
             }
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocityCamera, timeSmooth);
 
@@ -66,7 +66,7 @@ public class cameraScript : MonoBehaviour
             }
             else if (transform.position.y > maxY)
             {
-                transform.position = new Vector3(transform.position.x, maxY, -10f);
+                targetPosition = new Vector3(transform.position.x, maxY, -10f);
             }
         }
         else
