@@ -37,7 +37,7 @@ public class playerDamageScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        takeDamageTrigger(collision);
+        //takeDamageTrigger(collision);
     }
     void OnTriggerStay2D(Collider2D collision)
     {
@@ -53,11 +53,14 @@ public class playerDamageScript : MonoBehaviour
             {
                 int damageRecieved = collision.gameObject.GetComponent<enemyScript>().damage;
                 playerManagerScript.Health -= damageRecieved;
+
                 RuntimeManager.PlayOneShot(SFX_bank.EventPlayerDamage);
 
                 //decrease healthbar
+                float barFill = (float)playerManagerScript.Health / (float)playerManagerScript.maxHealth;
+                HealthBar.fillAmount = barFill;
 
-                if (playerManagerScript.Health >= 0)
+                if (playerManagerScript.Health > 0)
                 {
                     GetComponent<Animator>().SetTrigger("Damage");
                     iFramesActive = true;
@@ -80,10 +83,13 @@ public class playerDamageScript : MonoBehaviour
                 int damageRecieved = collision.gameObject.GetComponent<enemyScript>().damage;
                 playerManagerScript.Health -= damageRecieved;
 
+                RuntimeManager.PlayOneShot(SFX_bank.EventPlayerDamage);
+
+                //decrease healthbar
                 float barFill = (float)playerManagerScript.Health / (float)playerManagerScript.maxHealth;
                 HealthBar.fillAmount = barFill;
 
-                if (playerManagerScript.Health >= 0)
+                if (playerManagerScript.Health > 0)
                 {
                     GetComponent<Animator>().SetTrigger("Damage");
                     iFramesActive = true;
