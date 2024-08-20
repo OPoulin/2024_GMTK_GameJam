@@ -112,7 +112,7 @@ public class playerDamageScript : MonoBehaviour
     {
         RuntimeManager.PlayOneShot(SFX_bank.EventPlayerDeath);
         GetComponent<Animator>().SetTrigger("Death");
-        playerMovementScript.isDead = true;
+        GetComponent<playerMovementScript>().isDead = true;
         GetComponent<Rigidbody2D>().drag = 10;
         playerMovementScript.eventMove.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         Invoke("pouf", 1);
