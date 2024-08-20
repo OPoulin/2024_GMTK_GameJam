@@ -101,13 +101,11 @@ public class ratBehaviorScript : MonoBehaviour
             if (GetComponent<Animator>().GetBool("isAttack") == true && !isIdle)
             {
                 RuntimeManager.PlayOneShot(SFX_bank.EventMushroomAttack);
-                print("I'm bouta attack");
-                Invoke("AttackFalse", 1.2f);
-                isIdle = true;
+                print("I'm bouta attack");                isIdle = true;
                 GetComponent<Animator>().SetBool("isWalk", false);
                 speed = 0;
                 rb.drag = 1500f;
-                GetComponent<Animator>().SetBool("isWalk", false);
+                GetComponent<Animator>().SetBool("isAttack", false);
                 CancelInvoke("IdleFalse");
                 Invoke("IdleFalse", 1.6f);
             }
@@ -120,7 +118,6 @@ public class ratBehaviorScript : MonoBehaviour
             if (GetComponent<Animator>().GetBool("isAttack") == true && isIdle == false)
             {
                 RuntimeManager.PlayOneShot(SFX_bank.EventPlantAttack);
-                print("I'm bouta attack");
                 Invoke("AttackFalse", 1f);
                 Invoke("IdleFalse", 1f);
                 isIdle = true;
@@ -137,10 +134,8 @@ public class ratBehaviorScript : MonoBehaviour
                 {
                     transform.localScale = new Vector2 (scale, transform.localScale.y);
                 }
-                print("I will turn");
+                
             }
-
-            print(player.transform.position.x - transform.position.x);
         }
     }
 
