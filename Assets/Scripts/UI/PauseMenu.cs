@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public Button restart;
     public Button mainMenu;
     public GameObject confirm;
+    public GameObject player;
 
     static PauseMenu instance;
 
@@ -57,7 +58,7 @@ public class PauseMenu : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0f;
-                GetComponent<playerMovementScript>().isDead = true;
+                player.GetComponent<playerMovementScript>().isDead = true;
             }
             else if (!confirm.activeInHierarchy)
             {
@@ -65,7 +66,7 @@ public class PauseMenu : MonoBehaviour
                 Time.timeScale = 1f;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-                GetComponent<playerMovementScript>().isDead = false;
+                player.GetComponent<playerMovementScript>().isDead = false;
             }
         }
     }
@@ -77,7 +78,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        GetComponent<playerMovementScript>().isDead = false;
+        player.GetComponent<playerMovementScript>().isDead = false;
     }
 
     public void Restart()
@@ -88,7 +89,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        GetComponent<playerMovementScript>().isDead = false;
+        player.GetComponent<playerMovementScript>().isDead = false;
     }
 
     public void MainMenuConfirm()
@@ -97,7 +98,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        GetComponent<playerMovementScript>().isDead = false;
+        player.GetComponent<playerMovementScript>().isDead = false;
         SceneManager.LoadScene("TitleScreen");
     }
 }

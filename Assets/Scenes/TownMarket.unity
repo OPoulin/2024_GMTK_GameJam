@@ -6335,6 +6335,7 @@ MonoBehaviour:
   restart: {fileID: 521997111}
   mainMenu: {fileID: 159941523}
   confirm: {fileID: 886086508}
+  player: {fileID: 968504824}
 --- !u!4 &1082234226
 Transform:
   m_ObjectHideFlags: 0
