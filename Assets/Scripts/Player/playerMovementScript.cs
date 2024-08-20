@@ -44,7 +44,7 @@ public class playerMovementScript : MonoBehaviour
     public GameObject circleSize;
 
     Rigidbody2D rb;
-    public bool isDead = false;
+    public static bool isDead = false;
 
 
     //for SFXs

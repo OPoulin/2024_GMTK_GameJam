@@ -26,7 +26,13 @@ public class ChangeCursor : MonoBehaviour
             Cursor.visible = false;
             print("Cursor gone");
         }
-        else
+        else if(PauseMenu.isPaused)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            print("Cursor appear");
+        }
+        else 
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
