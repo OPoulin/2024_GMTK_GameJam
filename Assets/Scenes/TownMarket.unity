@@ -5233,8 +5233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c6385a2670bfa42b012c7260f838bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desiredShrink: 0.5
-  shrinkDelay: 0.7
+  desiredShrink: 0.005555556
+  shrinkDelay: 1.5
   strawberry: {fileID: 1102376524}
   acorn: {fileID: 4627889}
   mushroom: {fileID: 1043750348}
@@ -9849,7 +9849,7 @@ Transform:
   m_GameObject: {fileID: 1960234646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.6241352, w: 0.78131646}
-  m_LocalPosition: {x: 345.2, y: 2.112, z: 0}
+  m_LocalPosition: {x: 342.8, y: 2.1, z: 0}
   m_LocalScale: {x: 0.27245933, y: 0.27245933, z: 0.27245933}
   m_ConstrainProportionsScale: 0
   m_Children: []

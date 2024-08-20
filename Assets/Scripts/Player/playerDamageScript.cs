@@ -53,6 +53,7 @@ public class playerDamageScript : MonoBehaviour
             {
                 int damageRecieved = collision.gameObject.GetComponent<enemyScript>().damage;
                 playerManagerScript.Health -= damageRecieved;
+                RuntimeManager.PlayOneShot(SFX_bank.EventPlayerDamage);
 
                 //decrease healthbar
 
@@ -61,7 +62,6 @@ public class playerDamageScript : MonoBehaviour
                     GetComponent<Animator>().SetTrigger("Damage");
                     iFramesActive = true;
                     Invoke("iFrameStop", iFrameTime);
-                    RuntimeManager.PlayOneShot(SFX_bank.EventPlayerDamage);
                 }
                 else
                 {
