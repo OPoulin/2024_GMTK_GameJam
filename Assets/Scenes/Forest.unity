@@ -3260,7 +3260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2001433275928228493, guid: 4002a47866947c3468a4867b81315063, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2001433275928228493, guid: 4002a47866947c3468a4867b81315063, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3344,11 +3344,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3930923766584831414, guid: 4002a47866947c3468a4867b81315063, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 185.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3930923766584831414, guid: 4002a47866947c3468a4867b81315063, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4511897030297466152, guid: 4002a47866947c3468a4867b81315063, type: 3}
       propertyPath: HealthBar
