@@ -1289,10 +1289,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1379990661412337281, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
-      propertyPath: damage
-      value: 48
-      objectReference: {fileID: 0}
     - target: {fileID: 7962722066645362586, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
       propertyPath: m_LocalPosition.x
       value: 136.31
@@ -1550,10 +1546,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1379990661412337281, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
-      propertyPath: damage
-      value: 48
-      objectReference: {fileID: 0}
     - target: {fileID: 7962722066645362586, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
       propertyPath: m_LocalPosition.x
       value: 73.939995
@@ -4962,10 +4954,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1379990661412337281, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
-      propertyPath: damage
-      value: 48
-      objectReference: {fileID: 0}
     - target: {fileID: 7962722066645362586, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
       propertyPath: m_LocalPosition.x
       value: 66.13
@@ -8538,10 +8526,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1379990661412337281, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
-      propertyPath: damage
-      value: 48
-      objectReference: {fileID: 0}
     - target: {fileID: 7962722066645362586, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
       propertyPath: m_LocalPosition.x
       value: 127.65
@@ -9408,10 +9392,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1379990661412337281, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
-      propertyPath: damage
-      value: 48
-      objectReference: {fileID: 0}
     - target: {fileID: 7962722066645362586, guid: 6a36ecf7296e5374a8e24ec13ee73176, type: 3}
       propertyPath: m_LocalPosition.x
       value: 110.21
